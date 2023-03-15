@@ -33,7 +33,7 @@ export default function Chat() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: 15 }}
               >
-                <div className="space-y-[5px]">
+                <div className="space-y-[0px]">
                   <div className="h-[40px] bg-[#3c3c3c] rounded-sm" />
                   <div className="h-[40px] bg-[#3c3c3c] rounded-sm" />
                   <div className="h-[40px] bg-[#3c3c3c] rounded-sm" />

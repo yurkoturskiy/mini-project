@@ -19,7 +19,7 @@ export default function Home() {
       <nav>
         <Header />
       </nav>
-      <main>
+      <main className={inter.className}>
         <div className="flex relative flex-col items-center justify-center min-h-[var(--content-height)] py-2">
           <div className="absolute top-[24px] left-[20px]">
             <SideIsland />

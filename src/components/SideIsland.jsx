@@ -117,7 +117,7 @@ const Button = ({
               (expand && "visible") ||
               "hidden"
             }
-            className="flex data-[primary=true]:bg-[#1F1f1f] items-center data-[active=true]:w-[260px] bg-[#111112] pr-4 pl-[22px] rounded-md h-full  text-gray-200 menu-item-label"
+            className="flex data-[primary=true]:bg-[#1F1f1f] items-center data-[active=true]:w-[260px] bg-[#111112] pr-4 pl-[22px] rounded-md h-full  text-[#494949] menu-item-label"
           >
             {children}
           </motion.div>

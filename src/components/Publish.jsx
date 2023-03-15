@@ -41,11 +41,11 @@ export default function Publish() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: 15 }}
               >
-                <div className="space-y-[5px]">
-                  <div className="h-[40px] bg-[#b7b7b7] rounded-sm" />
-                  <div className="h-[40px] bg-[#b7b7b7] rounded-sm" />
-                  <div className="h-[40px] bg-[#b7b7b7] rounded-sm" />
-                  <div className="h-[40px] bg-[#b7b7b7] rounded-sm" />
+                <div className="space-y-[0px]">
+                  <div className="h-[40px] bg-[#dcdcdc] rounded-sm" />
+                  <div className="h-[40px] bg-[#dcdcdc] rounded-sm" />
+                  <div className="h-[40px] bg-[#dcdcdc] rounded-sm" />
+                  <div className="h-[40px] bg-[#dcdcdc] rounded-sm" />
                 </div>
                 <DropdownMenu.Arrow className="fill-[#ffffff]" />
               </motion.div>
