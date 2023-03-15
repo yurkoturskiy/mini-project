@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import Header from "@/components/Header";
 import VideoPlayer from "@/components/VideoPlayer";
 import DynamicIsland from "@/components/DynamicIsland";
+import SideIsland from "@/components/SideIsland";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,8 +21,9 @@ export default function Home() {
       </nav>
       <main>
         <div className="flex relative flex-col items-center justify-center min-h-[var(--content-height)] py-2">
-          <div className="absolute top-0 left-0">
-            <DynamicIsland />
+          <div className="absolute top-[24px] left-[26px]">
+            <SideIsland />
+            {/* <DynamicIsland /> */}
           </div>
           <VideoPlayer />
         </div>

@@ -11,7 +11,7 @@ const Button = ({ icon: Icon, children }) => {
       <div className="bg-[#1F1F1F] px-[10px] py-[5px] rounded-md z-20">
         <Icon className="fill-white" />
       </div>
-      <div className="flex items-center bg-[#1F1F1F] w-full pr-4 pl-[22px] text-gray-200 transition-transform -translate-x-[10rem] group-hover/menu:translate-x-[-6px] opacity-1 menu-item-label">
+      <div className="flex items-center bg-[#1F1F1F] pr-4 pl-[22px] text-gray-200 transition-transform -translate-x-[10rem] group-hover/menu:translate-x-[-6px] opacity-1 menu-item-label">
         {children}
       </div>
     </div>
@@ -23,7 +23,7 @@ export default function DynamicIsland() {
   return (
     <div className="space-y-[10px] group/menu">
       <Button icon={PlusIcon}>Add</Button>
-      <Button icon={LayersIcon}>Layer</Button>
+      <Button icon={LayersIcon}>Layers</Button>
       <Button icon={RatioIcon}>Ratios</Button>
       <Button icon={MoreIcon}>Settings</Button>
     </div>
