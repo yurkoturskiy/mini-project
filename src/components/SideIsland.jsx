@@ -21,7 +21,30 @@ const list = {
   },
 };
 
-const item = {
+const icon = {
+  active: {
+    opacity: 1,
+    x: 0,
+    fill: "#1f1f1f",
+    backgroundColor: "#fff",
+    color: "#1f1f1f",
+  },
+  visible: {
+    opacity: 1,
+    x: 10,
+  },
+  hover: { x: 0, fill: "#fff", backgroundColor: "#1f1f1f", color: "#fff" },
+  expand: (i) => ({
+    opacity: 1,
+    x: 0,
+    transition: {
+      delay: i * 0.03,
+    },
+  }),
+};
+
+const label = {
+  active: { opacity: 1, x: 16, backgroundColor: "#fff", color: "#1f1f1f" },
   visible: (i) => ({
     opacity: 1,
     x: 0,
@@ -29,37 +52,58 @@ const item = {
       delay: i * 0.03,
     },
   }),
-  hover: { backgroundColor: "#fff", color: "#1F1F1F" },
+  hover: { backgroundColor: "#1f1f1f", color: "#fff" },
   hidden: { opacity: 0, x: -100 },
-  active: { opacity: 1, x: 20 },
 };
 
 const Button = ({
   index,
   icon: Icon,
   children,
-  hover,
+  expand,
   isActive,
   setActive,
   id,
 }) => {
+  const [hover, setHover] = useState(false);
   return (
     <motion.div
       className="flex overflow-hidden rounded-md cursor-pointer"
       onClick={() => setActive(id)}
-      whileHover="hover"
+      onHoverStart={() => setHover(true)}
+      onHoverEnd={() => {
+        setHover(false);
+      }}
     >
-      <div className="bg-[#1F1F1F] px-[10px] py-[5px] rounded-md z-20">
-        <Icon className="fill-white" />
-      </div>
       <motion.div
-        variants={item}
+        initial="visible"
+        variants={icon}
         custom={index}
-        animate={hover ? "visible" : "hidden"}
-        className="flex items-center bg-[#1F1F1F] pr-4 pl-[22px] rounded-md text-gray-200 menu-item-label"
+        animate={
+          (isActive && "active") ||
+          (hover && "hover") ||
+          (expand && "expand") ||
+          "visible"
+        }
+        className="bg-[#111112] fill-white px-[10px] py-[5px] rounded-md z-20"
       >
-        {children}
+        <Icon />
       </motion.div>
+      <div className="pr-5 overflow-hidden -translate-x-2">
+        <motion.div
+          variants={label}
+          custom={index}
+          animate={
+            (isActive && "active") ||
+            (hover && "hover") ||
+            (expand && "visible") ||
+            "hidden"
+          }
+          className="flex items-center bg-[#111112] pr-4 pl-[22px] h-full rounded-md text-gray-200 menu-item-label"
+        >
+          {children}
+        </motion.div>
+      </div>
     </motion.div>
   );
 };
@@ -69,20 +113,18 @@ export default function SideIsland() {
   const [hover, setHover] = useState(false);
   const [active, setActive] = useState();
 
-  const params = { hover, setActive };
+  const params = { expand: hover, setActive };
   return (
     <motion.div
       onHoverStart={() => setHover(true)}
-      onHoverEnd={() => setHover(false)}
-      whileHover="visible"
+      onHoverEnd={() => {
+        setActive();
+        setHover(false);
+      }}
       initial="visible"
       variants={list}
       className="space-y-[10px]"
     >
-      {/* <motion.li variants={item}>Add</motion.li>
-      <motion.li variants={item}>Layers</motion.li>
-      <motion.li variants={item}>Ratios</motion.li>
-      <motion.li variants={item}>Settings</motion.li> */}
       <Button
         id="add"
         index={0}
