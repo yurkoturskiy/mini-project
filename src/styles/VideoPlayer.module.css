@@ -1,0 +1,7 @@
+.image {
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.image[data-loaded="true"] {
+  opacity: 1;
+}
