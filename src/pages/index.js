@@ -20,8 +20,11 @@ export default function Home() {
       </nav>
       <main>
         <div className="flex relative flex-col items-center justify-center min-h-[var(--content-height)] py-2">
-          <div className="absolute top-[24px] left-[26px]">
+          <div className="absolute top-[24px] left-[20px]">
             <SideIsland />
+          </div>
+          <div className="absolute bottom-[24px] left-[24px] bg-red-500">
+            awefaew
           </div>
           <VideoPlayer />
         </div>

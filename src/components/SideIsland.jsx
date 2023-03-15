@@ -35,7 +35,7 @@ const icon = {
   },
   visible: {
     opacity: 1,
-    x: 10,
+    x: 4,
   },
   hover: { x: 0, fill: "#fff", backgroundColor: "#1f1f1f", color: "#fff" },
   expand: (i) => ({
