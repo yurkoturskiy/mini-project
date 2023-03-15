@@ -63,7 +63,7 @@ const label = {
     },
   }),
   hover: { backgroundColor: "#1f1f1f", color: "#fff", x: 0, opacity: 1 },
-  hidden: { opacity: 0, x: -100 },
+  hidden: { opacity: 0, x: -50 },
 };
 
 const Button = ({
@@ -92,13 +92,14 @@ const Button = ({
           initial="visible"
           variants={icon}
           custom={index}
+          data-primary={index === 0}
           animate={
             (isActive && "active") ||
             (hover && "hover") ||
             (expand && "expand") ||
             "visible"
           }
-          className="bg-[#111112] fill-white px-[10px] py-[5px] rounded-md z-20"
+          className="data-[primary=true]:bg-[#1F1f1f] bg-[#111112] fill-white px-[10px] py-[5px] rounded-md z-20"
         >
           <Icon />
         </motion.div>
@@ -107,6 +108,7 @@ const Button = ({
             variants={label}
             custom={index}
             data-active={isActive}
+            data-primary={index === 0}
             initial="hidden"
             animate={
               (anotherSelected && "fade") ||
@@ -115,7 +117,7 @@ const Button = ({
               (expand && "visible") ||
               "hidden"
             }
-            className="flex items-center data-[active=true]:w-[260px] bg-[#111112] pr-4 pl-[22px] rounded-md h-full  text-gray-200 menu-item-label"
+            className="flex data-[primary=true]:bg-[#1F1f1f] items-center data-[active=true]:w-[260px] bg-[#111112] pr-4 pl-[22px] rounded-md h-full  text-gray-200 menu-item-label"
           >
             {children}
           </motion.div>
