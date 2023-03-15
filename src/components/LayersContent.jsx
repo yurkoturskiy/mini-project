@@ -1,13 +1,28 @@
 import React from "react";
+import { motion } from "framer-motion";
 import * as Accordion from "@radix-ui/react-accordion";
 import classNames from "classnames";
 import { ChevronDownIcon } from "@radix-ui/react-icons";
 
+const options = {
+  visible: (i) => ({
+    opacity: 1,
+    transition: {
+      delay: i * 1.03,
+    },
+  }),
+  hidden: { opacity: 0 },
+};
+
 const LayersContent = () => {
   return (
-    <div className="mt-[5px]">
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      className="mt-[5px]"
+    >
       <Accordion.Root
-        className="z-50 space-y-1 w-[300px] rounded-md shadow-[0_2px_10px] shadow-black/5"
+        className="z-50 space-y-1 w-[260px] rounded-md shadow-[0_2px_10px] shadow-black/5"
         type="single"
         collapsible
       >
@@ -38,7 +53,7 @@ const LayersContent = () => {
           <AccordionContent>Footage goes here</AccordionContent>
         </AccordionItem>
       </Accordion.Root>
-    </div>
+    </motion.div>
   );
 };
 export default LayersContent;
@@ -64,7 +79,7 @@ const AccordionTrigger = React.forwardRef(
     <Accordion.Header className="flex">
       <Accordion.Trigger
         className={classNames(
-          "text-white shadow-[#1f1f1f] flex h-[45px] flex-1 cursor-default rounded-[10px] items-center justify-between bg-[#252525] px-5 text-[15px] leading-none shadow-[0_1px_0] outline-none",
+          "text-white shadow-[#1f1f1f] text-sm py-[14px] flex h-[45px] flex-1 cursor-pointer rounded-[10px] items-center justify-between bg-[#252525] px-5 text-[15px] leading-none shadow-[0_1px_0] outline-none",
           className
         )}
         {...props}

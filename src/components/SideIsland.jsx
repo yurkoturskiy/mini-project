@@ -5,6 +5,9 @@ import RatioIcon from "@/assets/RatioIcon";
 import MoreIcon from "@/assets/MoreIcon";
 import React, { useState } from "react";
 import LayersContent from "./LayersContent";
+import AddContent from "./AddContent";
+import RatiosContent from "./RatiosContent";
+import SettingsContent from "./SettingsContent";
 
 const list = {
   visible: {
@@ -51,7 +54,7 @@ const label = {
     backgroundColor: "#fff",
     color: "#1f1f1f",
   },
-  fade: { opacity: 0 },
+  fade: { opacity: 0, x: 18 },
   visible: (i) => ({
     opacity: 1,
     x: 0,
@@ -59,7 +62,7 @@ const label = {
       delay: i * 0.03,
     },
   }),
-  hover: { backgroundColor: "#1f1f1f", color: "#fff" },
+  hover: { backgroundColor: "#1f1f1f", color: "#fff", x: 0, opacity: 1 },
   hidden: { opacity: 0, x: -100 },
 };
 
@@ -103,6 +106,8 @@ const Button = ({
           <motion.div
             variants={label}
             custom={index}
+            data-active={isActive}
+            initial="hidden"
             animate={
               (anotherSelected && "fade") ||
               (isActive && "active") ||
@@ -110,7 +115,7 @@ const Button = ({
               (expand && "visible") ||
               "hidden"
             }
-            className="flex items-center bg-[#111112] pr-4 pl-[22px] rounded-md h-full  text-gray-200 menu-item-label"
+            className="flex items-center data-[active=true]:w-[260px] bg-[#111112] pr-4 pl-[22px] rounded-md h-full  text-gray-200 menu-item-label"
           >
             {children}
           </motion.div>
@@ -144,6 +149,7 @@ export default function SideIsland() {
         isActive={active === "add"}
         anotherSelected={active !== "add" && !!active}
         icon={PlusIcon}
+        content={<AddContent />}
         {...params}
       >
         Add
@@ -165,6 +171,7 @@ export default function SideIsland() {
         isActive={active === "ratios"}
         anotherSelected={active !== "ratios" && !!active}
         icon={RatioIcon}
+        content={<RatiosContent />}
         {...params}
       >
         Ratios
@@ -175,6 +182,7 @@ export default function SideIsland() {
         isActive={active === "settings"}
         anotherSelected={active !== "settings" && !!active}
         icon={MoreIcon}
+        content={<SettingsContent />}
         {...params}
       >
         Settings
