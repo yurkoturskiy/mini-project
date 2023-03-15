@@ -1,11 +1,8 @@
 import Head from "next/head";
-import { motion } from "framer-motion";
-import Image from "next/image";
 import { Inter } from "next/font/google";
-import styles from "@/styles/Home.module.css";
 import Header from "@/components/Header";
 import VideoPlayer from "@/components/VideoPlayer";
-import SearchModal from "@/components/SearchModal";
+import DynamicIsland from "@/components/DynamicIsland";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -22,7 +19,10 @@ export default function Home() {
         <Header />
       </nav>
       <main>
-        <div className="flex flex-col items-center justify-center min-h-[var(--content-height)] py-2">
+        <div className="flex relative flex-col items-center justify-center min-h-[var(--content-height)] py-2">
+          <div className="absolute top-0 left-0">
+            <DynamicIsland />
+          </div>
           <VideoPlayer />
         </div>
       </main>
