@@ -1,9 +1,10 @@
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import LayersIcon from "@/assets/LayersIcon";
 import PlusIcon from "@/assets/PlusIcon";
 import RatioIcon from "@/assets/RatioIcon";
 import MoreIcon from "@/assets/MoreIcon";
-import { useState } from "react";
+import React, { useState } from "react";
+import LayersContent from "./LayersContent";
 
 const list = {
   visible: {
@@ -44,7 +45,13 @@ const icon = {
 };
 
 const label = {
-  active: { opacity: 1, x: 16, backgroundColor: "#fff", color: "#1f1f1f" },
+  active: {
+    opacity: 1,
+    x: 18,
+    backgroundColor: "#fff",
+    color: "#1f1f1f",
+  },
+  fade: { opacity: 0 },
   visible: (i) => ({
     opacity: 1,
     x: 0,
@@ -63,48 +70,54 @@ const Button = ({
   expand,
   isActive,
   setActive,
+  anotherSelected,
+  content,
   id,
 }) => {
   const [hover, setHover] = useState(false);
   return (
-    <motion.div
-      className="flex overflow-hidden rounded-md cursor-pointer"
-      onClick={() => setActive(id)}
-      onHoverStart={() => setHover(true)}
-      onHoverEnd={() => {
-        setHover(false);
-      }}
-    >
+    <div>
       <motion.div
-        initial="visible"
-        variants={icon}
-        custom={index}
-        animate={
-          (isActive && "active") ||
-          (hover && "hover") ||
-          (expand && "expand") ||
-          "visible"
-        }
-        className="bg-[#111112] fill-white px-[10px] py-[5px] rounded-md z-20"
+        className="flex rounded-md cursor-pointer"
+        onClick={() => setActive(id)}
+        onHoverStart={() => setHover(true)}
+        onHoverEnd={() => {
+          setHover(false);
+        }}
       >
-        <Icon />
-      </motion.div>
-      <div className="pr-5 overflow-hidden -translate-x-2">
         <motion.div
-          variants={label}
+          initial="visible"
+          variants={icon}
           custom={index}
           animate={
             (isActive && "active") ||
             (hover && "hover") ||
-            (expand && "visible") ||
-            "hidden"
+            (expand && "expand") ||
+            "visible"
           }
-          className="flex items-center bg-[#111112] pr-4 pl-[22px] h-full rounded-md text-gray-200 menu-item-label"
+          className="bg-[#111112] fill-white px-[10px] py-[5px] rounded-md z-20"
         >
-          {children}
+          <Icon />
         </motion.div>
-      </div>
-    </motion.div>
+        <div className="w-full pr-5 overflow-hidden -translate-x-2 ">
+          <motion.div
+            variants={label}
+            custom={index}
+            animate={
+              (anotherSelected && "fade") ||
+              (isActive && "active") ||
+              (hover && "hover") ||
+              (expand && "visible") ||
+              "hidden"
+            }
+            className="flex items-center bg-[#111112] pr-4 pl-[22px] rounded-md h-full  text-gray-200 menu-item-label"
+          >
+            {children}
+          </motion.div>
+        </div>
+      </motion.div>
+      {isActive && <div className="ml-[62px] absolute z-30">{content}</div>}
+    </div>
   );
 };
 
@@ -129,6 +142,7 @@ export default function SideIsland() {
         id="add"
         index={0}
         isActive={active === "add"}
+        anotherSelected={active !== "add" && !!active}
         icon={PlusIcon}
         {...params}
       >
@@ -138,7 +152,9 @@ export default function SideIsland() {
         id="layers"
         index={1}
         isActive={active === "layers"}
+        anotherSelected={active !== "layers" && !!active}
         icon={LayersIcon}
+        content={<LayersContent />}
         {...params}
       >
         Layers
@@ -147,6 +163,7 @@ export default function SideIsland() {
         id="ratios"
         index={2}
         isActive={active === "ratios"}
+        anotherSelected={active !== "ratios" && !!active}
         icon={RatioIcon}
         {...params}
       >
@@ -156,6 +173,7 @@ export default function SideIsland() {
         id="settings"
         index={3}
         isActive={active === "settings"}
+        anotherSelected={active !== "settings" && !!active}
         icon={MoreIcon}
         {...params}
       >

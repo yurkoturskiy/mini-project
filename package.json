@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@radix-ui/react-accordion": "^1.1.1",
     "@radix-ui/react-aspect-ratio": "^1.0.2",
     "@radix-ui/react-dialog": "^1.0.3",
     "@radix-ui/react-form": "^0.0.2",
@@ -16,6 +17,7 @@
     "@radix-ui/react-popover": "1.0.5",
     "@radix-ui/react-portal": "^1.0.2",
     "@radix-ui/react-tooltip": "^1.0.5",
+    "classnames": "^2.3.2",
     "eslint": "8.36.0",
     "eslint-config-next": "13.2.4",
     "framer-motion": "^10.2.5",
