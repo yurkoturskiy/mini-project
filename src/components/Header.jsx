@@ -9,6 +9,9 @@ import TooltipComponent from "./Tooltip";
 import PublishIcon from "@/assets/PublishIcon";
 import ChatIcon from "@/assets/ChatIcon";
 import SearchModal from "./SearchModal";
+import Chat from "./Chat";
+import Share from "./Share";
+import Publish from "./Publish";
 
 export const Button = forwardRef(
   ({ children, color, icon: Icon, ...props }, ref) => (
@@ -30,9 +33,9 @@ Button.defaultProps = {
 
 const Header = () => {
   return (
-    <div className="flex items-center px-2 h-[14] bg-[#1A1A1C] min-h-[56px]">
+    <div className="flex items-center pr-2 z-50 pl-6 h-[14] bg-[#1A1A1C] min-h-[56px]">
       <div className="flex">
-        <div className="ml-4 mr-[42px] pt-[12px] cursor-pointer fill-white hover:fill-green-200 ">
+        <div className="mr-[42px] pt-[12px] cursor-pointer fill-white hover:fill-green-200 ">
           <Logo />
         </div>
         <TooltipComponent content="Undo">
@@ -53,13 +56,9 @@ const Header = () => {
       </div>
 
       <div className="flex ml-auto gap-[10px]">
-        <div className="flex items-center justify-center w-[48px] h-[38px]">
-          <ChatIcon />
-        </div>
-        <Button icon={ShareIcon}>Share</Button>
-        <Button icon={PublishIcon} color="white">
-          Publish
-        </Button>
+        <Chat />
+        <Share />
+        <Publish />
       </div>
     </div>
   );
