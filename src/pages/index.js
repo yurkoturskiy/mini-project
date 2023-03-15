@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import Header from "@/components/Header";
 import VideoPlayer from "@/components/VideoPlayer";
 import SideIsland from "@/components/SideIsland";
+import MenuBar from "@/components/MenuBar";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -23,8 +24,8 @@ export default function Home() {
           <div className="absolute top-[24px] left-[20px]">
             <SideIsland />
           </div>
-          <div className="absolute bottom-[24px] left-[24px] bg-red-500">
-            awefaew
+          <div className="absolute bottom-[24px] left-[24px]">
+            <MenuBar />
           </div>
           <VideoPlayer />
         </div>
