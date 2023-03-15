@@ -21,14 +21,14 @@ export default function SearchModal() {
         <div
           data-open={open}
           id="search-icon"
-          className="fill-red-400 flex items-center w-24 h-24 absolute my-auto top-0 left-[8px] bottom-0 "
+          className="flex fill-[#a3a3a3] items-center w-24 h-24 absolute my-auto top-0 left-[8px] bottom-0 "
         >
           <AskAnythingIcon className="fill-[#a3a3a3]" />
         </div>
         <input
           onFocus={() => setOpen(true)}
           onBlur={() => setOpen(false)}
-          className="data-[open=false]:cursor-pointer search-input pl-10 mx-auto pointer-events-auto w-full h-full text-[#A3A3A3] bg-[#252525] inline-flex appearance-none items-center justify-center rounded-[4px] px-[10px] text-[15px] leading-none  focus:shadow-[0_0_0_2px_black] selection:color-red-500 selection:bg-blackA9"
+          className="data-[open=false]:cursor-pointer search-input pl-10 mx-auto pointer-events-auto w-full h-full text-[#A3A3A3] bg-[#252525] inline-flex appearance-none items-center justify-center rounded-[4px] px-[10px] text-[15px] leading-none selection:color-red-500 selection:bg-blackA9"
           required
           data-open={open}
           placeholder="Ask anything"

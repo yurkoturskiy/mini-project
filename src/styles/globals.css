@@ -65,13 +65,13 @@ a {
 
 .search-input {
   transition: outline 0.1s;
-  outline: 0px solid #9bff20;
+  outline: 0px solid #a3a3a3;
 }
 .search-input:hover {
-  outline: 1px solid #9bff20;
+  outline: 1px solid #a3a3a3;
 }
 .search-input:focus {
-  outline: 2px solid #9bff20;
+  outline: 2px solid #a3a3a3;
 }
 
 .search-input::placeholder {
