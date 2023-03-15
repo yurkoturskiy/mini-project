@@ -13,24 +13,6 @@ import Chat from "./Chat";
 import Share from "./Share";
 import Publish from "./Publish";
 
-export const Button = forwardRef(
-  ({ children, color, icon: Icon, ...props }, ref) => (
-    <button
-      ref={ref}
-      data-color={color}
-      className="styled-button flex rounded-md tracking-[0.01rem] leading-7 gap-2 py-[5px] pr-[15px] pl-[10px] flex-row text-base font-[400] items-center justify-center rounded-2"
-      {...props}
-    >
-      {Icon && <Icon />}
-      {children}
-    </button>
-  )
-);
-Button.displayName = "Button";
-Button.defaultProps = {
-  color: "dark",
-};
-
 const Header = () => {
   return (
     <div className="flex items-center pr-2 z-50 pl-6 h-[14] bg-[#1A1A1C] min-h-[56px]">

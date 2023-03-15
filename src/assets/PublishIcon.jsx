@@ -1,32 +1,11 @@
 import * as React from "react";
 
-const PublishIcon = (props) => (
-  <svg
-    width={32}
-    height={32}
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-    {...props}
-  >
-    <mask
-      id="a"
-      style={{
-        maskType: "alpha",
-      }}
-      maskUnits="userSpaceOnUse"
-      x={0}
-      y={0}
-      width={32}
-      height={32}
-    >
-      <path fill="#D9D9D9" d="M0 0h32v32H0z" />
-    </mask>
-    <g mask="url(#a)">
-      <path
-        d="M9.667 26.332v-2h12.667v2H9.667Zm5.334-5.333V9.61l-3.813 3.793-1.392-1.393L16 5.806l6.205 6.205-1.392 1.393L17 9.61V21h-2Z"
-        fill="url(#b)"
-      />
-    </g>
+const SvgComponent = ({ fill, ...props }) => (
+  <svg width={32} height={32} xmlns="http://www.w3.org/2000/svg" {...props}>
+    <path
+      d="M9.667 26.332v-2h12.667v2H9.667Zm5.334-5.333V9.61l-3.813 3.793-1.392-1.393L16 5.806l6.205 6.205-1.392 1.393L17 9.61V21h-2Z"
+      fill={fill || "url(#b)"}
+    />
     <defs>
       <linearGradient
         id="b"
@@ -43,4 +22,4 @@ const PublishIcon = (props) => (
   </svg>
 );
 
-export default PublishIcon;
+export default SvgComponent;

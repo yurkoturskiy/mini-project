@@ -9,11 +9,12 @@ export default function Chat() {
     <DropdownMenu.Root onOpenChange={setOpen}>
       <DropdownMenu.Trigger asChild>
         <motion.div
-          whileHover={{ y: -1 }}
-          whileTap={{ y: 1 }}
+          whileHover={{ scale: 1.04 }}
+          animate={{ scale: open ? 0.92 : 1 }}
+          whileTap={{ scale: 0.98 }}
           className="flex cursor-pointer items-center justify-center w-[48px] h-[38px]"
         >
-          <ChatIcon />
+          <ChatIcon data-open={open} />
         </motion.div>
       </DropdownMenu.Trigger>
 
@@ -22,7 +23,7 @@ export default function Chat() {
           <DropdownMenu.Portal forceMount>
             <DropdownMenu.Content
               align="start"
-              sideOffset={16}
+              sideOffset={12}
               className="min-w-[220px] bg-[#2c2c2c] text-white rounded-md p-[5px] shadow-[0px_10px_38px_-10px_rgba(22,_23,_24,_0.35),_0px_10px_20px_-15px_rgba(22,_23,_24,_0.2)] will-change-[opacity,transform] data-[side=top]:animate-slideDownAndFade data-[side=right]:animate-slideLeftAndFade data-[side=bottom]:animate-slideUpAndFade data-[side=left]:animate-slideRightAndFade"
               forceMount
               asChild
